@@ -161,6 +161,90 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C系列-强制类型转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/14/C系列-强制类型转换/">[C系列]强制类型转换</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/14/C系列-强制类型转换/" class="archive-article-date">
+  	<time datetime="2017-10-14T12:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对指针进行强制类型转换时并不改变指针的值，即对应的首地址，但其对应的内存长度会改变。许多编译器对指针类型要求严格，在传递指针时要进行强制类型转换</p>
+<h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i;</div><div class="line"><span class="keyword">int</span> *p = &amp;i;</div><div class="line"><span class="keyword">void</span> *q = (<span class="keyword">void</span>*)p;	<span class="comment">//强制转换指针的类型，用一个void型指针q来指向i</span></div></pre></td></tr></table></figure>
+<h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="comment">//free()，malloc()</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> *a = (<span class="keyword">int</span>*) <span class="built_in">malloc</span> (n*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));	<span class="comment">//堆区开辟空间的字节数 = n*sizeof(int)</span></div><div class="line"><span class="built_in">free</span>(a);	<span class="comment">//释放malloc开辟的空间，防止内存泄漏</span></div></pre></td></tr></table></figure>
+<h3 id="e-g-3"><a href="#e-g-3" class="headerlink" title="e.g.3"></a>e.g.3</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> p = <span class="number">0x12345678</span>;</div><div class="line"><span class="keyword">char</span> *q;</div><div class="line">q = (<span class="keyword">char</span>*)&amp;p;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p: 0x%x\n"</span>, &amp;p);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[0]: 0x%x\n"</span>, q[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[0]: 0x%x\n"</span>, &amp;q[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[1]: 0x%x\n"</span>, q[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[1]: 0x%x\n"</span>, &amp;q[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[2]: 0x%x\n"</span>, q[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[2]: 0x%x\n"</span>, &amp;q[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[3]: 0x%x\n"</span>, q[<span class="number">3</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[3]: 0x%x\n"</span>, &amp;q[<span class="number">3</span>]);</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p>&amp;p: 0xffffcbc4<br>q[0]: 0x78<br>&amp;q[0]: 0xffffcbc4<br>q[1]: 0x56<br>&amp;q[1]: 0xffffcbc5<br>q[2]: 0x34<br>&amp;q[2]: 0xffffcbc6<br>q[3]: 0x12<br>&amp;q[3]: 0xffffcbc7</p>
+<p>&amp;p本来是int<em>类型，强制转换为char</em></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">(void*)</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">malloc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/14/C系列-强制类型转换/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -324,6 +408,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
