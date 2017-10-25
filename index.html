@@ -184,16 +184,52 @@ var _hmt = _hmt || [];
         <p>对指针进行强制类型转换时并不改变指针的值，即对应的首地址，但其对应的内存长度会改变。许多编译器对指针类型要求严格，在传递指针时要进行强制类型转换</p>
 <h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i;</div><div class="line"><span class="keyword">int</span> *p = &amp;i;</div><div class="line"><span class="keyword">void</span> *q = (<span class="keyword">void</span>*)p;	<span class="comment">//强制转换指针的类型，用一个void型指针q来指向i</span></div></pre></td></tr></table></figure>
 <h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="comment">//free()，malloc()</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> *a = (<span class="keyword">int</span>*) <span class="built_in">malloc</span> (n*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));	<span class="comment">//堆区开辟空间的字节数 = n*sizeof(int)</span></div><div class="line"><span class="built_in">free</span>(a);	<span class="comment">//释放malloc开辟的空间，防止内存泄漏</span></div></pre></td></tr></table></figure>
-<h3 id="e-g-3"><a href="#e-g-3" class="headerlink" title="e.g.3"></a>e.g.3</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> p = <span class="number">0x12345678</span>;</div><div class="line"><span class="keyword">char</span> *q;</div><div class="line">q = (<span class="keyword">char</span>*)&amp;p;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p: 0x%x\n"</span>, &amp;p);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[0]: 0x%x\n"</span>, q[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[0]: 0x%x\n"</span>, &amp;q[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[1]: 0x%x\n"</span>, q[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[1]: 0x%x\n"</span>, &amp;q[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[2]: 0x%x\n"</span>, q[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[2]: 0x%x\n"</span>, &amp;q[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"q[3]: 0x%x\n"</span>, q[<span class="number">3</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;q[3]: 0x%x\n"</span>, &amp;q[<span class="number">3</span>]);</div></pre></td></tr></table></figure>
+<h3 id="e-g-3"><a href="#e-g-3" class="headerlink" title="e.g.3"></a>e.g.3</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> p = <span class="number">0x12345678</span>;</div><div class="line"><span class="keyword">int</span> *p1 = &amp;p;</div><div class="line"><span class="keyword">char</span> *p2 = (<span class="keyword">char</span>*)&amp;p;</div><div class="line"></div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p: 0x%x\n\n"</span>, &amp;p);</div><div class="line"></div><div class="line"><span class="built_in">printf</span>(<span class="string">"p1[0]: 0x%x\n"</span>, p1[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p1[0]: 0x%x\n"</span>, &amp;p1[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p1[1]: 0x%x\n"</span>, p1[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p1[1]: 0x%x\n\n"</span>, &amp;p1[<span class="number">1</span>]);</div><div class="line"></div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[0]: 0x%x\n"</span>, p2[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[0]: 0x%x\n"</span>, &amp;p2[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[1]: 0x%x\n"</span>, p2[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[1]: 0x%x\n"</span>, &amp;p2[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[2]: 0x%x\n"</span>, p2[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[2]: 0x%x\n"</span>, &amp;p2[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[3]: 0x%x\n"</span>, p2[<span class="number">3</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[3]: 0x%x\n"</span>, &amp;p2[<span class="number">3</span>]);</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>运行结果：</strong></li>
 </ul>
 <blockquote>
-<p>&amp;p: 0xffffcbc4<br>q[0]: 0x78<br>&amp;q[0]: 0xffffcbc4<br>q[1]: 0x56<br>&amp;q[1]: 0xffffcbc5<br>q[2]: 0x34<br>&amp;q[2]: 0xffffcbc6<br>q[3]: 0x12<br>&amp;q[3]: 0xffffcbc7</p>
+<p>&amp;p: 0x28fee4</p>
+<p>p1[0]: 0x12345678<br>&amp;p1[0]: 0x28fee4<br>p1[1]: 0x28fee4<br>&amp;p1[1]: 0x28fee8</p>
+<p>p2[0]: 0x78<br>&amp;p2[0]: 0x28fee4<br>p2[1]: 0x56<br>&amp;p2[1]: 0x28fee5<br>p2[2]: 0x34<br>&amp;p2[2]: 0x28fee6<br>p2[3]: 0x12<br>&amp;p2[3]: 0x28fee7</p>
 </blockquote>
 <ul>
 <li><strong>解析：</strong><blockquote>
-<p>&amp;p本来是int<em>类型，强制转换为char</em><br>栈区开口向下，先入栈的地址高<br>栈的生长方向和内存的生长方向相反<br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/master/20171023_%E6%A0%88%E5%92%8C%E5%86%85%E5%AD%98%E7%9A%84%E7%94%9F%E9%95%BF%E6%96%B9%E5%90%91.png" alt=""></p>
+<ol>
+<li>（有数据类型的）定义 =&gt; 分配一定大小的内存块</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_1.%E6%9C%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89.png" alt="20171025_1.有数据类型的定义"></p>
+<hr>
+<ol>
+<li>内存是连续的</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_2.%E5%86%85%E5%AD%98%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84.png" alt="20171025_2.内存是连续的"></p>
+<hr>
+<ol>
+<li>结合1.2.理解（下面均以开口向下栈为例）<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> p = <span class="number">0x12345678</span>; <span class="comment">//栈区存放临时变量</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_3.%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="20171025_3.定义和初始化"></p>
+<hr>
+<ol>
+<li>以(int*)的p1作指针<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> *p1 = &amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_4.%E6%95%B4%E5%9E%8B%E6%8C%87%E9%92%88p1.png" alt="20171025_4.整型指针p1"></p>
+<hr>
+<ol>
+<li>强制类型转换后，以(char*)的p2作指针<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">char</span> *p2 = (<span class="keyword">char</span>*)&amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_5.%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%8C%87%E9%92%88p2.png" alt="20171025_5.字符型指针p2"></p>
+</blockquote>
+<ul>
+<li><strong>注意：</strong><blockquote>
+<p>&amp;p本来是(int<em>)类型，强制转换为(char</em>)类型<br>栈区开口方向<br>栈的生长方向和内存的生长方向</p>
 </blockquote>
 </li>
 </ul>
