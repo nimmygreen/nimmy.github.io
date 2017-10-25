@@ -195,36 +195,24 @@ var _hmt = _hmt || [];
 </blockquote>
 <ul>
 <li><strong>解析：</strong><blockquote>
-<ol>
-<li>（有数据类型的）定义 =&gt; 分配一定大小的内存块</li>
-</ol>
+<p>1.（有数据类型的）定义 =&gt; 分配一定大小的内存块</p>
 <p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_1.%E6%9C%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89.png" alt="20171025_1.有数据类型的定义"></p>
 <hr>
-<ol>
-<li>内存是连续的</li>
-</ol>
+<p>2.内存是连续的</p>
 <p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_2.%E5%86%85%E5%AD%98%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84.png" alt="20171025_2.内存是连续的"></p>
 <hr>
-<ol>
-<li>结合1.2.理解（下面均以开口向下栈为例）<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> p = <span class="number">0x12345678</span>; <span class="comment">//栈区存放临时变量</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>3.结合1.2.理解（下面均以开口向下栈为例）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> p = <span class="number">0x12345678</span>; <span class="comment">//栈区存放临时变量</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
 <blockquote>
 <p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_3.%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="20171025_3.定义和初始化"></p>
 <hr>
-<ol>
-<li>以(int*)的p1作指针<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> *p1 = &amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>4.以(int*)的p1作指针<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> *p1 = &amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_4.%E6%95%B4%E5%9E%8B%E6%8C%87%E9%92%88p1.png" alt="20171025_4.整型指针p1"></p>
 <hr>
-<ol>
-<li>强制类型转换后，以(char*)的p2作指针<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">char</span> *p2 = (<span class="keyword">char</span>*)&amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>5.强制类型转换后，以(char*)的p2作指针<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">char</span> *p2 = (<span class="keyword">char</span>*)&amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_5.%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%8C%87%E9%92%88p2.png" alt="20171025_5.字符型指针p2"></p>
 </blockquote>
 <ul>
