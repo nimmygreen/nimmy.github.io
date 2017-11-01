@@ -161,6 +161,103 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C系列-指针数组-数组指针" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/01/C系列-指针数组-数组指针/">[C系列]指针数组&amp;数组指针</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/01/C系列-指针数组-数组指针/" class="archive-article-date">
+  	<time datetime="2017-11-01T02:05:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="char-a-3-amp-ne-char-a-3-amp-ne-char-a-3-amp-ne-char-a-3"><a href="#char-a-3-amp-ne-char-a-3-amp-ne-char-a-3-amp-ne-char-a-3" class="headerlink" title="char a[ ][3] &amp; ne; char a[3] &amp; ne; char (a)[3] &amp; ne; (char *)a[3]"></a>char a[ ][3] &amp; ne; char <em>a[3] &amp; ne; char (</em>a)[3] &amp; ne; (char *)a[3]</h2><h3 id="两点知识："><a href="#两点知识：" class="headerlink" title="两点知识："></a>两点知识：</h3><ol>
+<li>[]的优先级高于*</li>
+<li>加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）</li>
+</ol>
+<h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a[][<span class="number">4</span>] = &#123;“Hel”,”Wor”,”!”,”<span class="number">123</span>”&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>二维数组</strong>，前一长度可省，后面的不能省，且规定了单个字符长度</p>
+</blockquote>
+<h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *a[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>指针<strong>数组</strong>，先定义一个数组a[]，该数组存放了3个char型指针（数组的元素类型为char*）</p>
+<p>定义时需确定元素数量，或有初始化表达式确定数量：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">char</span> *a[] = &#123;“Hello”,”World”,”!”,”<span class="number">123456789</span>”&#125;;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>a[0]表示取地址，a[0]指向“Hello”的地址；*a[0]表示取值</p>
+<p>int <em>p[3] = (int </em>)a[3]; // <strong><a href="https://nimmygreen.github.io/2017/10/14/C%E7%B3%BB%E5%88%97-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" title="[C系列]强制类型转换">强制类型转换</a></strong></p>
+</blockquote>
+<h3 id="e-g-3"><a href="#e-g-3" class="headerlink" title="e.g.3"></a>e.g.3</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> (*a)[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>数组<strong>指针</strong>，先定义一个指针*a，该指针指向有3个元素数目的数组，常用于遍历二维数组</p>
+<p>(a)[0]表示取地址；(*a)[0]表示取值</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">指针数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数组指针</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/01/C系列-指针数组-数组指针/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C系列-强制类型转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -448,6 +545,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
             
             <div class="clearfix"></div>
