@@ -191,14 +191,13 @@ var _hmt = _hmt || [];
 <p>sizeof(str2) = 10; strlen(str2) = 3;</p>
 <p>总结：<br>1 sizeof()计算的是所分配内存空间的大小（e.g.1.的字符串以”\0”结尾，也占据了内存空间）<br>2 strlen()计算的是字符串的实际长度（不包含”\0”）</p>
 </blockquote>
-<h3 id="e-g-3-指针数组"><a href="#e-g-3-指针数组" class="headerlink" title="e.g.3 指针数组"></a>e.g.3 <a href="https://nimmygreen.github.io/2017/11/01/C%E7%B3%BB%E5%88%97-%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88/" title="[C系列]指针数组&amp;数组指针">指针数组</a></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *a[<span class="number">10</span>] = &#123;<span class="string">"Hello"</span>,<span class="string">"World"</span>,<span class="string">"123456789"</span>&#125;;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>sizeof(a) = 40; sizeof(<em>a) = 4; strlen(a) = 3; strlen(</em>a) = 5;</p>
-</blockquote>
-<h3 id="e-g-4-数组指针"><a href="#e-g-4-数组指针" class="headerlink" title="e.g.4 数组指针"></a>e.g.4 <a href="https://nimmygreen.github.io/2017/11/01/C%E7%B3%BB%E5%88%97-%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88/" title="[C系列]指针数组&amp;数组指针">数组指针</a></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> (*b)[<span class="number">10</span>] = &#123;<span class="string">"Hello"</span>,<span class="string">"World"</span>,<span class="string">"123456789"</span>&#125;;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>sizeof(b) = 4; sizeof(<em>b) = 10; strlen(b) = strlen(</em>b) = 5;</p>
-</blockquote>
+<h3 id="e-g-3-指针数组-amp-数组指针"><a href="#e-g-3-指针数组-amp-数组指针" class="headerlink" title="e.g.3 指针数组&amp;数组指针"></a>e.g.3 <a href="https://nimmygreen.github.io/2017/11/01/C%E7%B3%BB%E5%88%97-%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88/" title="[C系列]指针数组&amp;数组指针">指针数组&amp;数组指针</a></h3><ul>
+<li><p>指针数组</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *a[<span class="number">10</span>] = &#123;<span class="string">"Hello"</span>,<span class="string">"World"</span>,<span class="string">"123456789"</span>&#125;;</div><div class="line"><span class="comment">//sizeof(a) = 40; sizeof(*a) = 4;</span></div><div class="line"><span class="comment">//strlen(a) = 3; strlen(*a) = 5;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>数组指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> (*b)[<span class="number">10</span>] = &#123;<span class="string">"Hello"</span>,<span class="string">"World"</span>,<span class="string">"123456789"</span>&#125;;</div><div class="line"><span class="comment">//sizeof(b) = 4; sizeof(*b) = 10;</span></div><div class="line"><span class="comment">//strlen(b) = strlen(*b) = 5;</span></div></pre></td></tr></table></figure></li>
+</ul>
 
       
 
