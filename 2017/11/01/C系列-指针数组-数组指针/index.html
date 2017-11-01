@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://nimmygreen.github.io">
   <title>[C系列]指针数组&amp;数组指针 | 思想直播信号</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1char a[ ][3] &amp;amp;ne; char *a[3] &amp;amp;ne; char (*a)[3] &amp;amp;ne; (char *) a[3] 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，">
+  <meta name="description" content="1234char a1[ ][3]; char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定">
 <meta name="keywords" content="指针数组,数组指针">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[C系列]指针数组&amp;数组指针">
 <meta property="og:url" content="https://nimmygreen.github.io/2017/11/01/C系列-指针数组-数组指针/index.html">
 <meta property="og:site_name" content="思想直播信号">
-<meta property="og:description" content="1char a[ ][3] &amp;amp;ne; char *a[3] &amp;amp;ne; char (*a)[3] &amp;amp;ne; (char *) a[3] 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，">
+<meta property="og:description" content="1234char a1[ ][3]; char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2017-11-01T02:24:47.298Z">
+<meta property="og:updated_time" content="2017-11-01T02:28:56.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C系列]指针数组&amp;数组指针">
-<meta name="twitter:description" content="1char a[ ][3] &amp;amp;ne; char *a[3] &amp;amp;ne; char (*a)[3] &amp;amp;ne; (char *) a[3] 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，">
+<meta name="twitter:description" content="1234char a1[ ][3]; char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定">
   
     <link rel="alternative" href="/atom.xml" title="思想直播信号" type="application/atom+xml">
   
@@ -181,7 +181,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a[ ][<span class="number">3</span>] &amp;ne; <span class="keyword">char</span> *a[<span class="number">3</span>] &amp;ne; <span class="keyword">char</span> (*a)[<span class="number">3</span>] &amp;ne; (<span class="keyword">char</span> *) a[<span class="number">3</span>]</div></pre></td></tr></table></figure>
+        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a1[ ][<span class="number">3</span>]; </div><div class="line"><span class="keyword">char</span> *a2[<span class="number">3</span>];</div><div class="line"><span class="keyword">char</span> (*a3)[<span class="number">3</span>];</div><div class="line">(<span class="keyword">char</span> *) a4[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<p>以上都互不相同</p>
 <h3 id="两点知识："><a href="#两点知识：" class="headerlink" title="两点知识："></a>两点知识：</h3><ol>
 <li>[]的优先级高于*</li>
 <li>加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）</li>
@@ -449,19 +450,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
             
             <div class="clearfix"></div>

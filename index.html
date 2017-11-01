@@ -181,7 +181,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a[ ][<span class="number">3</span>] &amp;ne; <span class="keyword">char</span> *a[<span class="number">3</span>] &amp;ne; <span class="keyword">char</span> (*a)[<span class="number">3</span>] &amp;ne; (<span class="keyword">char</span> *) a[<span class="number">3</span>]</div></pre></td></tr></table></figure>
+        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a1[ ][<span class="number">3</span>]; </div><div class="line"><span class="keyword">char</span> *a2[<span class="number">3</span>];</div><div class="line"><span class="keyword">char</span> (*a3)[<span class="number">3</span>];</div><div class="line">(<span class="keyword">char</span> *) a4[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<p>以上都互不相同</p>
 <h3 id="两点知识："><a href="#两点知识：" class="headerlink" title="两点知识："></a>两点知识：</h3><ol>
 <li>[]的优先级高于*</li>
 <li>加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）</li>
@@ -541,19 +542,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
             
             <div class="clearfix"></div>
