@@ -182,11 +182,11 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>sizeof()计算的是所分配内存空间的大小<br>strlen()计算的是字符串的实际长度</p>
-<h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str1[] = <span class="string">"abc"</span>;</div></pre></td></tr></table></figure>
+<h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> str1[] = <span class="string">"abc"</span>;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>sizeof(str1) = 4; strlen(str1) = 3;</p>
 </blockquote>
-<h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str2[<span class="number">10</span>] = <span class="string">"abc"</span>;</div></pre></td></tr></table></figure>
+<h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> str2[<span class="number">10</span>] = <span class="string">"abc"</span>;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>sizeof(str2) = 10; strlen(str2) = 3;</p>
 <p>总结：<br>1 sizeof()计算的是所分配内存空间的大小（e.g.1.的字符串以”\0”结尾，也占据了内存空间）<br>2 strlen()计算的是字符串的实际长度（不包含”\0”）</p>
@@ -721,6 +721,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sizeof()</a>
               </li>
              
@@ -730,14 +738,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">字符串长度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
               </li>
              
               <li class="article-tag-list-item">
