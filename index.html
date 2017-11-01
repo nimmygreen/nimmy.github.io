@@ -161,6 +161,181 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C系列-sizeof-和strlen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/01/C系列-sizeof-和strlen/">[C系列]sizeof()和strlen()</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/01/C系列-sizeof-和strlen/" class="archive-article-date">
+  	<time datetime="2017-11-01T03:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str1[] = <span class="string">"abc"</span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>sizeof(str1) = 4; strlen(str1) = 3;</p>
+</blockquote>
+<h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str2[<span class="number">10</span>] = <span class="string">"abc"</span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>sizeof(str2) = 10; strlen(str2) = 3;</p>
+<p>总结：<br>1 sizeof()计算的是所分配内存空间的大小（e.g.1.的字符串以”\0”结尾，也占据了内存空间）<br>2 strlen()计算的是字符串的实际长度（不包含”\0”）</p>
+</blockquote>
+<h3 id="e-g-3-指针数组"><a href="#e-g-3-指针数组" class="headerlink" title="e.g.3 指针数组"></a>e.g.3 <a href="https://nimmygreen.github.io/2017/11/01/C%E7%B3%BB%E5%88%97-%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88/" title="[C系列]指针数组&amp;数组指针">指针数组</a></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *a[<span class="number">10</span>] = &#123;<span class="string">"Hello"</span>,<span class="string">"World"</span>,<span class="string">"123456789"</span>&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>sizeof(a) = 40; sizeof(<em>a) = 4; strlen(a) = 3; strlen(</em>a) = 5;</p>
+</blockquote>
+<h3 id="e-g-4-数组指针"><a href="#e-g-4-数组指针" class="headerlink" title="e.g.4 数组指针"></a>e.g.4 <a href="https://nimmygreen.github.io/2017/11/01/C%E7%B3%BB%E5%88%97-%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88/" title="[C系列]指针数组&amp;数组指针">数组指针</a></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> (*b)[<span class="number">10</span>] = &#123;<span class="string">"Hello"</span>,<span class="string">"World"</span>,<span class="string">"123456789"</span>&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>sizeof(b) = 4; sizeof(<em>b) = 10; strlen(b) = strlen(</em>b) = 5;</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sizeof()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">strlen()</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">字符串长度</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/01/C系列-sizeof-和strlen/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C系列-数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/01/C系列-数据类型/">[C系列]数据类型</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/01/C系列-数据类型/" class="archive-article-date">
+  	<time datetime="2017-11-01T02:59:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据类型</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">最小存储空间</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/01/C系列-数据类型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C系列-指针数组-数组指针" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -545,6 +720,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sizeof()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">strlen()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">字符串长度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
               </li>
              
@@ -558,6 +745,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">最小存储空间</a>
               </li>
             
             <div class="clearfix"></div>
