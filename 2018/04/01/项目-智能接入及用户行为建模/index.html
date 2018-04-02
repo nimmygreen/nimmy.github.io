@@ -6,20 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://nimmygreen.github.io">
-  <title>[C系列]指针数组&amp;数组指针 | 思想直播信号</title>
+  <title>[项目]智能接入及用户行为建模 | 思想直播信号</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234char a1[][3]; char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定了">
-<meta name="keywords" content="指针数组,数组指针">
+  <meta name="description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。">
+<meta name="keywords" content="机器学习,用户行为建模,带宽资源分配智能化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C系列]指针数组&amp;数组指针">
-<meta property="og:url" content="https://nimmygreen.github.io/2017/11/01/C系列-指针数组-数组指针/index.html">
+<meta property="og:title" content="[项目]智能接入及用户行为建模">
+<meta property="og:url" content="https://nimmygreen.github.io/2018/04/01/项目-智能接入及用户行为建模/index.html">
 <meta property="og:site_name" content="思想直播信号">
-<meta property="og:description" content="1234char a1[][3]; char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定了">
+<meta property="og:description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2017-11-01T02:36:30.823Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_2.network%20state%20awareness2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_3.DRP1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_4.DRP2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_5.DRP3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_6.DRP4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_7.DRP5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_8.DRP6.png">
+<meta property="og:updated_time" content="2018-04-02T09:08:42.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[C系列]指针数组&amp;数组指针">
-<meta name="twitter:description" content="1234char a1[][3]; char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定了">
+<meta name="twitter:title" content="[项目]智能接入及用户行为建模">
+<meta name="twitter:description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png">
   
     <link rel="alternative" href="/atom.xml" title="思想直播信号" type="application/atom+xml">
   
@@ -161,51 +170,35 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C系列-指针数组-数组指针" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-项目-智能接入及用户行为建模" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      [C系列]指针数组&amp;数组指针
+      [项目]智能接入及用户行为建模
     </h1>
   
 
         
-        <a href="/2017/11/01/C系列-指针数组-数组指针/" class="archive-article-date">
-  	<time datetime="2017-11-01T02:05:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-01</time>
+        <a href="/2018/04/01/项目-智能接入及用户行为建模/" class="archive-article-date">
+  	<time datetime="2018-04-01T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a1[][<span class="number">3</span>]; </div><div class="line"><span class="keyword">char</span> *a2[<span class="number">3</span>];</div><div class="line"><span class="keyword">char</span> (*a3)[<span class="number">3</span>];</div><div class="line">(<span class="keyword">char</span> *) a4[<span class="number">3</span>];</div></pre></td></tr></table></figure>
-<p>以上都互不相同</p>
-<h3 id="两点知识："><a href="#两点知识：" class="headerlink" title="两点知识："></a>两点知识：</h3><ol>
-<li>[]的优先级高于*</li>
-<li>加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）</li>
-</ol>
-<h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a[][<span class="number">3</span>] = &#123;“He”,”Wo”,”!”,”<span class="number">12</span>”&#125;;</div></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>二维数组</strong>，前一长度可省，后面的不能省，且规定了单个字符长度</p>
-</blockquote>
-<h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *a[<span class="number">3</span>];</div></pre></td></tr></table></figure>
-<blockquote>
-<p>1 指针<strong>数组</strong>，先定义一个数组a[]，该数组存放了3个char型指针（数组的元素类型为char*）</p>
-<p>2 定义时需确定元素数量，或有初始化表达式确定数量：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">char</span> *a[] = &#123;“Hello”,”World”,”!”,”<span class="number">123456789</span>”&#125;;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p>3 a[0]表示取地址，a[0]指向“Hello”的地址；*a[0]表示取值</p>
-</blockquote>
-<h3 id="e-g-3"><a href="#e-g-3" class="headerlink" title="e.g.3"></a>e.g.3</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *a[<span class="number">3</span>];</div><div class="line"><span class="keyword">int</span> *p[<span class="number">3</span>] = (<span class="keyword">int</span> *)a[<span class="number">3</span>];</div></pre></td></tr></table></figure>
-<blockquote>
-<p><strong><a href="https://nimmygreen.github.io/2017/10/14/C%E7%B3%BB%E5%88%97-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" title="[C系列]强制类型转换">强制类型转换</a></strong></p>
-</blockquote>
-<h3 id="e-g-4"><a href="#e-g-4" class="headerlink" title="e.g.4"></a>e.g.4</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> (*a)[<span class="number">3</span>];</div></pre></td></tr></table></figure>
-<blockquote>
-<p>1 数组<strong>指针</strong>，先定义一个指针*a，该指针指向有3个元素数目的数组，常用于遍历二维数组</p>
-<p>2 (a)[0]表示取地址；(*a)[0]表示取值</p>
-</blockquote>
+        <p>根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。</p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png" alt="20180402_1.network state awareness1"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_2.network%20state%20awareness2.png" alt="20180402_2.network state awareness2"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_3.DRP1.png" alt="20180402_3.DRP1"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_4.DRP2.png" alt="20180402_4.DRP2"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_5.DRP3.png" alt="20180402_5.DRP3"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_6.DRP4.png" alt="20180402_6.DRP4"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_7.DRP5.png" alt="20180402_7.DRP5"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_8.DRP6.png" alt="20180402_8.DRP6"></p>
 
       
 
@@ -250,11 +243,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">指针数组</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数组指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">用户行为建模</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">带宽资源分配智能化</a>
         		</li>
       		
 		</ul>
@@ -310,7 +307,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://nimmygreen.github.io/2017/11/01/C系列-指针数组-数组指针/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://nimmygreen.github.io/2018/04/01/项目-智能接入及用户行为建模/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -324,18 +321,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/11/01/C系列-数据类型/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          [C系列]数据类型
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/10/14/C系列-强制类型转换/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">[C系列]强制类型转换</div>
+    <a href="/2018/04/01/项目-入侵检测/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[项目]入侵检测</div>
       <i class="icon-circle-right"></i>
     </a>
   
