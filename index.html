@@ -540,7 +540,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a1[][<span class="number">3</span>]; </div><div class="line"><span class="keyword">char</span> *a2[<span class="number">3</span>];</div><div class="line"><span class="keyword">char</span> (*a3)[<span class="number">3</span>];</div><div class="line">(<span class="keyword">char</span> *) a4[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a1[][<span class="number">3</span>];</div><div class="line"><span class="keyword">char</span> *a2[<span class="number">3</span>];</div><div class="line"><span class="keyword">char</span> (*a3)[<span class="number">3</span>];</div><div class="line">(<span class="keyword">char</span> *) a4[<span class="number">3</span>];</div></pre></td></tr></table></figure>
 <p>以上都互不相同</p>
 <h3 id="两点知识："><a href="#两点知识：" class="headerlink" title="两点知识："></a>两点知识：</h3><ol>
 <li>[]的优先级高于*</li>
@@ -554,7 +554,10 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>1 指针<strong>数组</strong>，先定义一个数组a[]，该数组存放了3个char型指针（数组的元素类型为char*）</p>
 <p>2 定义时需确定元素数量，或有初始化表达式确定数量：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">char</span> *a[] = &#123;“Hello”,”World”,”!”,”<span class="number">123456789</span>”&#125;;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p>3 a[0]表示取地址，a[0]指向“Hello”的地址；*a[0]表示取值</p>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>3 a[0]表示取地址，a[0]指向“Hello”的地址；*a[0]表示取值<br>4 指针数组具有自我结束的能力：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *keyword[] = &#123;<span class="string">"while"</span>, <span class="string">"case"</span>, <span class="string">"static"</span>, <span class="string">"do"</span>, <span class="string">'\0'</span>&#125;; <span class="comment">//0或NULL</span></div><div class="line"><span class="keyword">char</span> *keyword[] = &#123;<span class="string">"while"</span>, <span class="string">"case"</span>, <span class="string">"static"</span>, <span class="string">"do"</span>, <span class="string">'\0'</span>&#125;; <span class="comment">//0或NULL</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; keyword[i] != <span class="literal">NULL</span>; i++)</div><div class="line">&#123;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, keyword[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <h3 id="e-g-3"><a href="#e-g-3" class="headerlink" title="e.g.3"></a>e.g.3</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> *a[<span class="number">3</span>];</div><div class="line"><span class="keyword">int</span> *p[<span class="number">3</span>] = (<span class="keyword">int</span> *)a[<span class="number">3</span>];</div></pre></td></tr></table></figure>
 <blockquote>
@@ -820,7 +823,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 nimmygreen
+    		&copy; 2019 nimmygreen
     	</div>
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
@@ -904,23 +907,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sizeof()</a>
+                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">strlen()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">字符串长度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
+                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -940,11 +931,31 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sizeof()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">strlen()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">字符串长度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">最小存储空间</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -957,14 +968,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
               </li>
             
             <div class="clearfix"></div>
