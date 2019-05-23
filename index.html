@@ -161,130 +161,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-C系列-多维数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/23/C系列-多维数组/">C系列-多维数组</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/23/C系列-多维数组/" class="archive-article-date">
-  	<time datetime="2019-05-23T08:28:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/23/C系列-多维数组/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C系列-函数数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/23/C系列-函数数据类型/">C系列-函数数据类型</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/23/C系列-函数数据类型/" class="archive-article-date">
-  	<time datetime="2019-05-23T08:27:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/23/C系列-函数数据类型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-C系列-数组类型-数组指针类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -305,18 +181,17 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-数组是相同类型变量的有序集合，一大片内存空间。"><a href="#1-数组是相同类型变量的有序集合，一大片内存空间。" class="headerlink" title="1.    数组是相同类型变量的有序集合，一大片内存空间。"></a>1.    数组是相同类型变量的有序集合，一大片内存空间。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> c[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;	<span class="comment">//编译器编译时就确定所有的值为零，速度快</span></div><div class="line"><span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span>(c));	<span class="comment">//显示的重置内存块，速度慢</span></div></pre></td></tr></table></figure>
-<p>c 是数组首元素的地址，c+1 步长4个字节<br>&amp;c 是整个数组的地址，&amp;c+1 步长100<em>4个字节<br>数组定义时确定：元素类型和数组大小。<br><em>*数组数据类型</em></em>的定义：<br>typedef int (myint5)[5];<br>//抽象一个名为myint5的数据类型，此数据类型相当于一个承载5个int型变量的数组数据类型<br>//myint5 array; &lt;=&gt; int array[5];</p>
-<h3 id="2-定义数组指针变量的3种方法"><a href="#2-定义数组指针变量的3种方法" class="headerlink" title="2.    定义数组指针变量的3种方法"></a>2.    定义数组指针变量的3种方法</h3><p>(1) 通过<strong>数组类型</strong>定义<strong>数组指针</strong>：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typedef int (myarray)[5];</div><div class="line">myarray *p;  <span class="comment">//定义了一个指向myarray数组数据类型的指针变量p，即p是一个指针变量，他指向一个数组</span></div></pre></td></tr></table></figure></p>
-<hr>
+        <p><strong>数组数据类型</strong>的定义：<br>typedef int (myint5)[5];<br>//抽象一个名为myint5的数据类型，此数据类型相当于一个承载5个int型变量的数组数据类型<br>//myint5 array; &lt;=&gt; int array[5];</p>
+<h3 id="1-数组是相同类型变量的有序集合，一大片内存空间。"><a href="#1-数组是相同类型变量的有序集合，一大片内存空间。" class="headerlink" title="1.    数组是相同类型变量的有序集合，一大片内存空间。"></a>1.    数组是相同类型变量的有序集合，一大片内存空间。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main1</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</div><div class="line">	<span class="keyword">int</span> b[<span class="number">100</span>] = &#123;<span class="number">1</span>, <span class="number">3</span>&#125;;</div><div class="line">	<span class="keyword">int</span> c[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;	<span class="comment">//编译器编译时 就确定所有的值 为零，速度快 </span></div><div class="line">	<span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span>(c));	<span class="comment">//显示的 重置内存块，速度慢</span></div><div class="line">	</div><div class="line">	<span class="comment">//c 是数组首元素的地址，c+1 步长 4 个字节</span></div><div class="line">	<span class="comment">//&amp;c 是整个数组的地址，&amp;c+1 步长 100*4 个字节</span></div><div class="line">	<span class="comment">//数组定义时确定：元素类型和数组大小。</span></div><div class="line">	</div><div class="line">	typedef int (myint5)[5];	//抽象一个名为myint5的数据类型，此数据类型相当于一个承载5个int型变量的数组数据类型</div><div class="line">	myint5 <span class="built_in">array</span>;	<span class="comment">//int array[5];</span></div><div class="line">	<span class="comment">//使用定义的数组变量array</span></div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">array</span>[i] = i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"array[%d] = %d\n"</span>, i, <span class="built_in">array</span>[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-定义数组指针变量的3种方法"><a href="#2-定义数组指针变量的3种方法" class="headerlink" title="2.    定义数组指针变量的3种方法"></a>2.    定义数组指针变量的3种方法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main2</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">char</span> *a[] = &#123;<span class="string">"1111"</span>, <span class="string">"3333"</span>, <span class="string">"aaaa"</span>&#125;;	<span class="comment">//指针数组：一个数组，里面存放指针 </span></div><div class="line">	<span class="comment">//定义数组指针变量的3种方法</span></div><div class="line">	<span class="comment">//1. 直接定义 </span></div><div class="line">	<span class="keyword">char</span> (*b)[<span class="number">5</span>];	<span class="comment">//数组指针：一个指针， 指向一个数组</span></div><div class="line">	</div><div class="line">	<span class="comment">//2. 定义了一个指向myarrayp数组数据类型的 指针变量pp，即pp是一个指针变量，他指向一个数组</span></div><div class="line">	typedef int (myarrayp)[5];</div><div class="line">	myarrayp *pp;	<span class="comment">//int (*pp)[5];</span></div><div class="line">	</div><div class="line">	<span class="comment">//3.</span></div><div class="line">	typedef int (*myarray)[5];//抽象一个名为myarray的数据类型，此数据类型相当于一个 指向包含5个int型元素的数组的 数组指针数据类型</div><div class="line">	myarray p;	<span class="comment">//int (*p)[5];告诉编译器给我分配一个指针变量 </span></div><div class="line">	<span class="comment">//使用定义的数组变量p</span></div><div class="line">	<span class="keyword">int</span> c[<span class="number">5</span>];</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	p = &amp;c;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		(*p)[i] = i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"(*p)[%d] = %d\n"</span>, i, (*p)[i]);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, c[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(1) 通过<strong>数组类型</strong>定义<strong>数组指针</strong>：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typedef int (myarray)[5];</div><div class="line">myarray *p;  <span class="comment">//定义了一个指向myarray数组数据类型的指针变量p，即p是一个指针变量，他指向一个数组</span></div></pre></td></tr></table></figure></p>
 <p>(2) <strong>数组指针数据类型</strong>的定义：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typedef int (*myarray)[5];</div><div class="line">myarray p;  <span class="comment">//&lt;=&gt; int (*p)[5];//抽象一个名为myarray的数据类型，此数据类型相当于一个指向包含5个int型元素的数组的数组指针数据类型</span></div></pre></td></tr></table></figure></p>
-<hr>
 <p>(3) 直接定义：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> (*p)[<span class="number">5</span>];</div></pre></td></tr></table></figure></p>
 <h3 id="3-数组指针类型变量"><a href="#3-数组指针类型变量" class="headerlink" title="3.    数组指针类型变量"></a>3.    数组指针类型变量</h3><p>(1) 2. 中的p就是数组指针变量</p>
 <hr>
-<p>(2)    数组指针类型变量与1维数组名的关系<br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%26%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B/20190523_1.%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E4%B8%8E1%E7%BB%B4%E6%95%B0%E7%BB%84%E5%90%8D%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt="20190523_1.数组指针类型变量与1维数组名的关系"><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">c 是数组第<span class="number">0</span>行的地址，c+<span class="number">1</span> 步长为<span class="number">4</span>个字节</div><div class="line">&amp;c 或p 是整个数组的地址，&amp;c+<span class="number">1</span> 或p+<span class="number">1</span> 步长 <span class="number">3</span>*<span class="number">4</span> 个字节</div></pre></td></tr></table></figure></p>
+<p>(2)    数组指针类型变量与1维数组名的关系<br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%26%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B/20190523_1.%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E4%B8%8E1%E7%BB%B4%E6%95%B0%E7%BB%84%E5%90%8D%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt="20190523_1.数组指针类型变量与1维数组名的关系"><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// c 是数组第0行的地址，c+1 步长为4个字节</span></div><div class="line"><span class="comment">// &amp;c 或p 是整个数组的地址，&amp;c+1 或p+1 步长 3*4 个字节</span></div></pre></td></tr></table></figure></p>
 <hr>
-<p>(3) 数组指针类型变量与多维数组名的关系<br>多维数组的本质是一个指向一维数组的行指针，<strong>多维数组名的本质是一个数组指针</strong><br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%26%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B/20190523_2.%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%90%8D%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt="20190523_2.数组指针类型变量与多维数组名的关系"><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">c+i 是整个第i行的地址，*(c+i) 代表<span class="number">1</span>级指针，是第i行首元素的地址</div><div class="line">*c+<span class="number">1</span> 是数组第<span class="number">0</span>行第<span class="number">1</span>列元素的地址，*(c+<span class="number">1</span>) 是第<span class="number">1</span>行第<span class="number">0</span>列的地址</div><div class="line"></div><div class="line">第i行第j列元素的地址:</div><div class="line">*(c+i)+j &lt;=&gt; c[i]+j &lt;=&gt; &amp;c[i][j]</div><div class="line"></div><div class="line">第i行第j列元素的值:</div><div class="line">*(*(c+i)+j) &lt;=&gt; *(c[i]+j) &lt;=&gt; c[i][j]</div></pre></td></tr></table></figure></p>
+<p>(3) 数组指针类型变量与多维数组名的关系<br>多维数组的本质是一个指向一维数组的行指针，<strong>多维数组名的本质是一个数组指针</strong><br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%26%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B/20190523_2.%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%90%8D%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt="20190523_2.数组指针类型变量与多维数组名的关系"><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// c+i 是整个第i行的地址，*(c+i) 代表1级指针，是第i行首元素的地址</span></div><div class="line"><span class="comment">// *c+1 是数组第0行第1列元素的地址，*(c+1) 是第1行第0列的地址</span></div><div class="line"></div><div class="line">第i行第j列元素的地址:</div><div class="line">*(c+i)+j &lt;=&gt; c[i]+j &lt;=&gt; &amp;c[i][j]</div><div class="line"></div><div class="line">第i行第j列元素的值:</div><div class="line">*(*(c+i)+j) &lt;=&gt; *(c[i]+j) &lt;=&gt; c[i][j]</div></pre></td></tr></table></figure></p>
 
       
 
@@ -783,7 +658,8 @@ var _hmt = _hmt || [];
 <p>1 数组<strong>指针</strong>，先定义一个指针*a，该指针指向有3个元素数目的数组，常用于遍历二维数组</p>
 <p>2 (a)[0]表示取地址；(*a)[0]表示取值</p>
 </blockquote>
-
+<hr>
+<h2 id="指针数组的应用"><a href="#指针数组的应用" class="headerlink" title="指针数组的应用"></a>指针数组的应用</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="comment">//演示：指针数组的用法（菜单，命令行）</span></div><div class="line"></div><div class="line"><span class="comment">//1. 菜单 </span></div><div class="line"><span class="comment">//求关键字在表中的位置</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">searchKeyTable</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *table[], <span class="keyword">const</span> <span class="keyword">int</span> size, <span class="keyword">const</span> <span class="keyword">char</span> *key, <span class="keyword">int</span> *pos)</span></span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DIM(a) (sizeof(a)/sizeof(*a))</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main1</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> inum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> pos = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="comment">//指针数组</span></div><div class="line">	<span class="keyword">char</span> *keyword[] = &#123;<span class="string">"while"</span>, <span class="string">"case"</span>, <span class="string">"static"</span>, <span class="string">"do"</span>, <span class="string">'\0'</span>&#125;;</div><div class="line">	</div><div class="line">	searchKeyTable(keyword, DIM(keyword), <span class="string">"do"</span>, &amp;pos);	<span class="comment">//宏替换 </span></div><div class="line">	<span class="comment">//searchKeyTable(keyword, inum, "do", &amp;pos);</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"pos: %d\n"</span>, pos);</div><div class="line">	</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">searchKeyTable</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *table[], <span class="keyword">const</span> <span class="keyword">int</span> size, <span class="keyword">const</span> <span class="keyword">char</span> *key, <span class="keyword">int</span> *pos)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> rv = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> inum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(table==<span class="literal">NULL</span> || key==<span class="literal">NULL</span> || pos==<span class="literal">NULL</span>)</div><div class="line">	&#123;</div><div class="line">		rv = <span class="number">-1</span>;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"func searchKeyTable: %d\n"</span>, rv);</div><div class="line">		<span class="keyword">return</span> rv;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//inum = (sizeof(table)/sizeof(*table));</span></div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;size; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="built_in">strcmp</span>(key, table[i] == <span class="number">0</span>))</div><div class="line">		&#123;</div><div class="line">			*pos = i;</div><div class="line">			<span class="comment">//break;</span></div><div class="line">			<span class="keyword">return</span> rv;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//没有找到返回-1</span></div><div class="line">	<span class="keyword">if</span>(i == size)</div><div class="line">	&#123;</div><div class="line">		*pos = <span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> rv;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//2. 命令行</span></div><div class="line"><span class="comment">//在程序执行的时候可以向main函数传递参数</span></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">argc 命令行参数 </span></div><div class="line"><span class="comment">argv 命令行参数数组 </span></div><div class="line"><span class="comment">env 函数变量数组</span></div><div class="line"><span class="comment"> </span></div><div class="line"><span class="comment">int main(int argc, char *argv[], char **env);</span></div><div class="line"><span class="comment">*/</span> </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[], <span class="keyword">char</span> **env)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** Begin argv ***********\n"</span>);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;argc; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, argv[i]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"><span class="comment">//	for(i=0; argv[i] != NULL; i++)</span></div><div class="line"><span class="comment">//	&#123;</span></div><div class="line"><span class="comment">//		printf("%s\n", argv[i]);</span></div><div class="line"><span class="comment">//	&#125;</span></div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** End argv ***********\n"</span>);</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** Begin env ***********\n"</span>);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; env[i] != <span class="literal">NULL</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, env[i]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** End env ***********\n"</span>);</div><div class="line">	</div><div class="line">	getchar();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -1132,10 +1008,77 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/14/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/14/hello-world/" class="archive-article-date">
+  	<time datetime="2017-10-14T09:39:26.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/14/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
@@ -1250,11 +1193,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">最小存储空间</a>
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1266,15 +1209,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
+                <a href="javascript:void(0)" class="js-tag color2">最小存储空间</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1291,18 +1246,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Silhouette coefficient</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
             
             <div class="clearfix"></div>

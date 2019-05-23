@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="思想直播信号">
 <meta property="og:description" content="1234char a1[][3];char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定了单">
 <meta property="og:locale" content="chinese">
-<meta property="og:updated_time" content="2018-04-27T11:25:44.947Z">
+<meta property="og:updated_time" content="2019-05-23T09:19:45.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C系列]指针数组&amp;数组指针">
 <meta name="twitter:description" content="1234char a1[][3];char *a2[3];char (*a3)[3];(char *) a4[3]; 以上都互不相同 两点知识： []的优先级高于* 加*表示取指针所指向内存中的值，不加表示取指针的值（指针所指向的内存的地址）  e.g.11char a[][3] = &amp;#123;“He”,”Wo”,”!”,”12”&amp;#125;;  二维数组，前一长度可省，后面的不能省，且规定了单">
@@ -209,7 +209,8 @@ var _hmt = _hmt || [];
 <p>1 数组<strong>指针</strong>，先定义一个指针*a，该指针指向有3个元素数目的数组，常用于遍历二维数组</p>
 <p>2 (a)[0]表示取地址；(*a)[0]表示取值</p>
 </blockquote>
-
+<hr>
+<h2 id="指针数组的应用"><a href="#指针数组的应用" class="headerlink" title="指针数组的应用"></a>指针数组的应用</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="comment">//演示：指针数组的用法（菜单，命令行）</span></div><div class="line"></div><div class="line"><span class="comment">//1. 菜单 </span></div><div class="line"><span class="comment">//求关键字在表中的位置</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">searchKeyTable</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *table[], <span class="keyword">const</span> <span class="keyword">int</span> size, <span class="keyword">const</span> <span class="keyword">char</span> *key, <span class="keyword">int</span> *pos)</span></span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DIM(a) (sizeof(a)/sizeof(*a))</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main1</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> inum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> pos = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="comment">//指针数组</span></div><div class="line">	<span class="keyword">char</span> *keyword[] = &#123;<span class="string">"while"</span>, <span class="string">"case"</span>, <span class="string">"static"</span>, <span class="string">"do"</span>, <span class="string">'\0'</span>&#125;;</div><div class="line">	</div><div class="line">	searchKeyTable(keyword, DIM(keyword), <span class="string">"do"</span>, &amp;pos);	<span class="comment">//宏替换 </span></div><div class="line">	<span class="comment">//searchKeyTable(keyword, inum, "do", &amp;pos);</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"pos: %d\n"</span>, pos);</div><div class="line">	</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">searchKeyTable</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *table[], <span class="keyword">const</span> <span class="keyword">int</span> size, <span class="keyword">const</span> <span class="keyword">char</span> *key, <span class="keyword">int</span> *pos)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> rv = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> inum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(table==<span class="literal">NULL</span> || key==<span class="literal">NULL</span> || pos==<span class="literal">NULL</span>)</div><div class="line">	&#123;</div><div class="line">		rv = <span class="number">-1</span>;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"func searchKeyTable: %d\n"</span>, rv);</div><div class="line">		<span class="keyword">return</span> rv;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//inum = (sizeof(table)/sizeof(*table));</span></div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;size; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="built_in">strcmp</span>(key, table[i] == <span class="number">0</span>))</div><div class="line">		&#123;</div><div class="line">			*pos = i;</div><div class="line">			<span class="comment">//break;</span></div><div class="line">			<span class="keyword">return</span> rv;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//没有找到返回-1</span></div><div class="line">	<span class="keyword">if</span>(i == size)</div><div class="line">	&#123;</div><div class="line">		*pos = <span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> rv;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//2. 命令行</span></div><div class="line"><span class="comment">//在程序执行的时候可以向main函数传递参数</span></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">argc 命令行参数 </span></div><div class="line"><span class="comment">argv 命令行参数数组 </span></div><div class="line"><span class="comment">env 函数变量数组</span></div><div class="line"><span class="comment"> </span></div><div class="line"><span class="comment">int main(int argc, char *argv[], char **env);</span></div><div class="line"><span class="comment">*/</span> </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[], <span class="keyword">char</span> **env)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** Begin argv ***********\n"</span>);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;argc; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, argv[i]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"><span class="comment">//	for(i=0; argv[i] != NULL; i++)</span></div><div class="line"><span class="comment">//	&#123;</span></div><div class="line"><span class="comment">//		printf("%s\n", argv[i]);</span></div><div class="line"><span class="comment">//	&#125;</span></div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** End argv ***********\n"</span>);</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** Begin env ***********\n"</span>);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; env[i] != <span class="literal">NULL</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, env[i]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"********** End env ***********\n"</span>);</div><div class="line">	</div><div class="line">	getchar();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -485,11 +486,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">最小存储空间</a>
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,15 +502,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
+                <a href="javascript:void(0)" class="js-tag color2">最小存储空间</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,18 +539,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Silhouette coefficient</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
             
             <div class="clearfix"></div>
