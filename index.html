@@ -182,8 +182,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>数组数据类型</strong>的定义：<br>typedef int (myint5)[5];<br>//抽象一个名为myint5的数据类型，此数据类型相当于一个承载5个int型变量的数组数据类型<br>//myint5 array; &lt;=&gt; int array[5];</p>
-<h3 id="1-数组是相同类型变量的有序集合，一大片内存空间。"><a href="#1-数组是相同类型变量的有序集合，一大片内存空间。" class="headerlink" title="1.    数组是相同类型变量的有序集合，一大片内存空间。"></a>1.    数组是相同类型变量的有序集合，一大片内存空间。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main1</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</div><div class="line">	<span class="keyword">int</span> b[<span class="number">100</span>] = &#123;<span class="number">1</span>, <span class="number">3</span>&#125;;</div><div class="line">	<span class="keyword">int</span> c[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;	<span class="comment">//编译器编译时 就确定所有的值 为零，速度快 </span></div><div class="line">	<span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span>(c));	<span class="comment">//显示的 重置内存块，速度慢</span></div><div class="line">	</div><div class="line">	<span class="comment">//c 是数组首元素的地址，c+1 步长 4 个字节</span></div><div class="line">	<span class="comment">//&amp;c 是整个数组的地址，&amp;c+1 步长 100*4 个字节</span></div><div class="line">	<span class="comment">//数组定义时确定：元素类型和数组大小。</span></div><div class="line">	</div><div class="line">	typedef int (myint5)[5];	//抽象一个名为myint5的数据类型，此数据类型相当于一个承载5个int型变量的数组数据类型</div><div class="line">	myint5 <span class="built_in">array</span>;	<span class="comment">//int array[5];</span></div><div class="line">	<span class="comment">//使用定义的数组变量array</span></div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">array</span>[i] = i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"array[%d] = %d\n"</span>, i, <span class="built_in">array</span>[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-定义数组指针变量的3种方法"><a href="#2-定义数组指针变量的3种方法" class="headerlink" title="2.    定义数组指针变量的3种方法"></a>2.    定义数组指针变量的3种方法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main2</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">char</span> *a[] = &#123;<span class="string">"1111"</span>, <span class="string">"3333"</span>, <span class="string">"aaaa"</span>&#125;;	<span class="comment">//指针数组：一个数组，里面存放指针 </span></div><div class="line">	<span class="comment">//定义数组指针变量的3种方法</span></div><div class="line">	<span class="comment">//1. 直接定义 </span></div><div class="line">	<span class="keyword">char</span> (*b)[<span class="number">5</span>];	<span class="comment">//数组指针：一个指针， 指向一个数组</span></div><div class="line">	</div><div class="line">	<span class="comment">//2. 定义了一个指向myarrayp数组数据类型的 指针变量pp，即pp是一个指针变量，他指向一个数组</span></div><div class="line">	typedef int (myarrayp)[5];</div><div class="line">	myarrayp *pp;	<span class="comment">//int (*pp)[5];</span></div><div class="line">	</div><div class="line">	<span class="comment">//3.</span></div><div class="line">	typedef int (*myarray)[5];//抽象一个名为myarray的数据类型，此数据类型相当于一个 指向包含5个int型元素的数组的 数组指针数据类型</div><div class="line">	myarray p;	<span class="comment">//int (*p)[5];告诉编译器给我分配一个指针变量 </span></div><div class="line">	<span class="comment">//使用定义的数组变量p</span></div><div class="line">	<span class="keyword">int</span> c[<span class="number">5</span>];</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	p = &amp;c;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		(*p)[i] = i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"(*p)[%d] = %d\n"</span>, i, (*p)[i]);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, c[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="1-数组是相同类型变量的有序集合，一大片内存空间。"><a href="#1-数组是相同类型变量的有序集合，一大片内存空间。" class="headerlink" title="1.    数组是相同类型变量的有序集合，一大片内存空间。"></a>1.    数组是相同类型变量的有序集合，一大片内存空间。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main1</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</div><div class="line">	<span class="keyword">int</span> b[<span class="number">100</span>] = &#123;<span class="number">1</span>, <span class="number">3</span>&#125;;</div><div class="line">	<span class="keyword">int</span> c[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;	<span class="comment">//编译器编译时 就确定所有的值 为零，速度快 </span></div><div class="line">	<span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span>(c));	<span class="comment">//显示的 重置内存块，速度慢</span></div><div class="line">	</div><div class="line">	<span class="comment">//c 是数组首元素的地址，c+1 步长 4 个字节</span></div><div class="line">	<span class="comment">//&amp;c 是整个数组的地址，&amp;c+1 步长 100*4 个字节</span></div><div class="line">	<span class="comment">//数组定义时确定：元素类型和数组大小。</span></div><div class="line">	</div><div class="line">	typedef int (myint5)[5];</div><div class="line">	<span class="comment">//抽象一个名为myint5的数据类型，此数据类型相当于一个承载5个int型变量的数组数据类型</span></div><div class="line">	myint5 <span class="built_in">array</span>;	<span class="comment">//int array[5];</span></div><div class="line">	<span class="comment">//使用定义的数组变量array</span></div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">array</span>[i] = i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"array[%d] = %d\n"</span>, i, <span class="built_in">array</span>[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-定义数组指针变量的3种方法"><a href="#2-定义数组指针变量的3种方法" class="headerlink" title="2.    定义数组指针变量的3种方法"></a>2.    定义数组指针变量的3种方法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main2</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">char</span> *a[] = &#123;<span class="string">"1111"</span>, <span class="string">"3333"</span>, <span class="string">"aaaa"</span>&#125;;	<span class="comment">//指针数组：一个数组，里面存放指针 </span></div><div class="line">	<span class="comment">//定义数组指针变量的3种方法</span></div><div class="line">	<span class="comment">//1. 直接定义 </span></div><div class="line">	<span class="keyword">char</span> (*b)[<span class="number">5</span>];	<span class="comment">//数组指针：一个指针， 指向一个数组</span></div><div class="line">	</div><div class="line">	<span class="comment">//2. 定义了一个指向myarrayp数组数据类型的 指针变量pp，即pp是一个指针变量，他指向一个数组</span></div><div class="line">	typedef int (myarrayp)[5];</div><div class="line">	myarrayp *pp;	<span class="comment">//int (*pp)[5];</span></div><div class="line">	</div><div class="line">	<span class="comment">//3.</span></div><div class="line">	typedef int (*myarray)[5];</div><div class="line">	<span class="comment">//抽象一个名为myarray的数据类型，此数据类型相当于一个 指向包含5个int型元素的数组的 数组指针数据类型</span></div><div class="line">	myarray p;	<span class="comment">//int (*p)[5];告诉编译器给我分配一个指针变量 </span></div><div class="line">	<span class="comment">//使用定义的数组变量p</span></div><div class="line">	<span class="keyword">int</span> c[<span class="number">5</span>];</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	p = &amp;c;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		(*p)[i] = i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"(*p)[%d] = %d\n"</span>, i, (*p)[i]);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, c[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>(1) 通过<strong>数组类型</strong>定义<strong>数组指针</strong>：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typedef int (myarray)[5];</div><div class="line">myarray *p;  <span class="comment">//定义了一个指向myarray数组数据类型的指针变量p，即p是一个指针变量，他指向一个数组</span></div></pre></td></tr></table></figure></p>
 <p>(2) <strong>数组指针数据类型</strong>的定义：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typedef int (*myarray)[5];</div><div class="line">myarray p;  <span class="comment">//&lt;=&gt; int (*p)[5];//抽象一个名为myarray的数据类型，此数据类型相当于一个指向包含5个int型元素的数组的数组指针数据类型</span></div></pre></td></tr></table></figure></p>
 <p>(3) 直接定义：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> (*p)[<span class="number">5</span>];</div></pre></td></tr></table></figure></p>
@@ -1185,27 +1185,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数组指针类型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,19 +1201,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数组指针类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1246,6 +1234,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Silhouette coefficient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
             
             <div class="clearfix"></div>
