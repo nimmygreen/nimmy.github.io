@@ -6,26 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://nimmygreen.github.io">
-  <title>[C系列]强制类型转换 | 思想直播信号</title>
+  <title>[项目]智能接入及用户行为建模 | 思想直播信号</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对指针进行强制类型转换时并不改变指针的值，即对应的首地址，但其对应的内存长度会改变。许多编译器对指针类型要求严格，在传递指针时要进行强制类型转换 e.g.1123int i;int *p = &amp;amp;i;void *q = (void*)p;	//强制转换指针的类型，用一个void型指针q来指向i e.g.212345#include &amp;lt;stdlib.h&amp;gt;//free()，mallo">
-<meta name="keywords" content="(void*),malloc">
+  <meta name="description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。         ref. https://ieeexplore.ieee.org/document/8707107">
+<meta name="keywords" content="机器学习,用户行为建模,带宽资源分配智能化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C系列]强制类型转换">
-<meta property="og:url" content="https://nimmygreen.github.io/2017/10/14/C系列-强制类型转换/index.html">
+<meta property="og:title" content="[项目]智能接入及用户行为建模">
+<meta property="og:url" content="https://nimmygreen.github.io/2017/10/20/项目-智能接入及用户行为建模/index.html">
 <meta property="og:site_name" content="思想直播信号">
-<meta property="og:description" content="对指针进行强制类型转换时并不改变指针的值，即对应的首地址，但其对应的内存长度会改变。许多编译器对指针类型要求严格，在传递指针时要进行强制类型转换 e.g.1123int i;int *p = &amp;amp;i;void *q = (void*)p;	//强制转换指针的类型，用一个void型指针q来指向i e.g.212345#include &amp;lt;stdlib.h&amp;gt;//free()，mallo">
+<meta property="og:description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。         ref. https://ieeexplore.ieee.org/document/8707107">
 <meta property="og:locale" content="chinese">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_1.%E6%9C%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_2.%E5%86%85%E5%AD%98%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_3.%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_4.%E6%95%B4%E5%9E%8B%E6%8C%87%E9%92%88p1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_5.%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%8C%87%E9%92%88p2.png">
-<meta property="og:updated_time" content="2017-10-25T08:14:38.230Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_2.network%20state%20awareness2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_3.DRP1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_4.DRP2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_5.DRP3.png">
+<meta property="og:image" content="https://github.com/nimmygreen/BlogPicture/blob/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_6.DRP4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_7.DRP5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_8.DRP6.png">
+<meta property="og:updated_time" content="2019-05-24T03:26:51.528Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[C系列]强制类型转换">
-<meta name="twitter:description" content="对指针进行强制类型转换时并不改变指针的值，即对应的首地址，但其对应的内存长度会改变。许多编译器对指针类型要求严格，在传递指针时要进行强制类型转换 e.g.1123int i;int *p = &amp;amp;i;void *q = (void*)p;	//强制转换指针的类型，用一个void型指针q来指向i e.g.212345#include &amp;lt;stdlib.h&amp;gt;//free()，mallo">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_1.%E6%9C%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89.png">
+<meta name="twitter:title" content="[项目]智能接入及用户行为建模">
+<meta name="twitter:description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。         ref. https://ieeexplore.ieee.org/document/8707107">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png">
   
     <link rel="alternative" href="/atom.xml" title="思想直播信号" type="application/atom+xml">
   
@@ -167,66 +170,36 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C系列-强制类型转换" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-项目-智能接入及用户行为建模" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      [C系列]强制类型转换
+      [项目]智能接入及用户行为建模
     </h1>
   
 
         
-        <a href="/2017/10/14/C系列-强制类型转换/" class="archive-article-date">
-  	<time datetime="2017-10-14T12:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
+        <a href="/2017/10/20/项目-智能接入及用户行为建模/" class="archive-article-date">
+  	<time datetime="2017-10-20T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对指针进行强制类型转换时并不改变指针的值，即对应的首地址，但其对应的内存长度会改变。许多编译器对指针类型要求严格，在传递指针时要进行强制类型转换</p>
-<h3 id="e-g-1"><a href="#e-g-1" class="headerlink" title="e.g.1"></a>e.g.1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i;</div><div class="line"><span class="keyword">int</span> *p = &amp;i;</div><div class="line"><span class="keyword">void</span> *q = (<span class="keyword">void</span>*)p;	<span class="comment">//强制转换指针的类型，用一个void型指针q来指向i</span></div></pre></td></tr></table></figure>
-<h3 id="e-g-2"><a href="#e-g-2" class="headerlink" title="e.g.2"></a>e.g.2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="comment">//free()，malloc()</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> *a = (<span class="keyword">int</span>*) <span class="built_in">malloc</span> (n*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));	<span class="comment">//堆区开辟空间的字节数 = n*sizeof(int)</span></div><div class="line"><span class="built_in">free</span>(a);	<span class="comment">//释放malloc开辟的空间，防止内存泄漏</span></div></pre></td></tr></table></figure>
-<h3 id="e-g-3"><a href="#e-g-3" class="headerlink" title="e.g.3"></a>e.g.3</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> p = <span class="number">0x12345678</span>;</div><div class="line"><span class="keyword">int</span> *p1 = &amp;p;</div><div class="line"><span class="keyword">char</span> *p2 = (<span class="keyword">char</span>*)&amp;p;</div><div class="line"></div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p: 0x%x\n\n"</span>, &amp;p);</div><div class="line"></div><div class="line"><span class="built_in">printf</span>(<span class="string">"p1[0]: 0x%x\n"</span>, p1[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p1[0]: 0x%x\n"</span>, &amp;p1[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p1[1]: 0x%x\n"</span>, p1[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p1[1]: 0x%x\n\n"</span>, &amp;p1[<span class="number">1</span>]);</div><div class="line"></div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[0]: 0x%x\n"</span>, p2[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[0]: 0x%x\n"</span>, &amp;p2[<span class="number">0</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[1]: 0x%x\n"</span>, p2[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[1]: 0x%x\n"</span>, &amp;p2[<span class="number">1</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[2]: 0x%x\n"</span>, p2[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[2]: 0x%x\n"</span>, &amp;p2[<span class="number">2</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"p2[3]: 0x%x\n"</span>, p2[<span class="number">3</span>]);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"&amp;p2[3]: 0x%x\n"</span>, &amp;p2[<span class="number">3</span>]);</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>运行结果：</strong></li>
-</ul>
-<blockquote>
-<p>&amp;p: 0x28fee4</p>
-<p>p1[0]: 0x12345678<br>&amp;p1[0]: 0x28fee4<br>p1[1]: 0x28fee4<br>&amp;p1[1]: 0x28fee8</p>
-<p>p2[0]: 0x78<br>&amp;p2[0]: 0x28fee4<br>p2[1]: 0x56<br>&amp;p2[1]: 0x28fee5<br>p2[2]: 0x34<br>&amp;p2[2]: 0x28fee6<br>p2[3]: 0x12<br>&amp;p2[3]: 0x28fee7</p>
-</blockquote>
-<ul>
-<li><strong>解析：</strong><blockquote>
-<p>1 （有数据类型的）定义 =&gt; 分配一定大小的内存块</p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_1.%E6%9C%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89.png" alt="20171025_1.有数据类型的定义"></p>
-<hr>
-<p>2 内存是连续的</p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_2.%E5%86%85%E5%AD%98%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84.png" alt="20171025_2.内存是连续的"></p>
-<hr>
-<p>3 结合1.2.理解（下面均以开口向下栈为例）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> p = <span class="number">0x12345678</span>; <span class="comment">//栈区存放临时变量</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_3.%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="20171025_3.定义和初始化"></p>
-<hr>
-<p>4 以(int*)的p1作指针<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">int</span> *p1 = &amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_4.%E6%95%B4%E5%9E%8B%E6%8C%87%E9%92%88p1.png" alt="20171025_4.整型指针p1"></p>
-<hr>
-<p>5 强制类型转换后，以(char*)的p2作指针<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">char</span> *p2 = (<span class="keyword">char</span>*)&amp;p;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/0a1a597990f1464d393e17e91fbf98468f32fb2a/20171025_5.%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%8C%87%E9%92%88p2.png" alt="20171025_5.字符型指针p2"></p>
-</blockquote>
-<ul>
-<li><strong>注意：</strong><blockquote>
-<p>&amp;p本来是(int<em>)类型，强制转换为(char</em>)类型<br>栈区开口方向<br>栈的生长方向和内存的生长方向</p>
-</blockquote>
-</li>
-</ul>
+        <p>根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。</p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png" alt="20180402_1.network state awareness1"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_2.network%20state%20awareness2.png" alt="20180402_2.network state awareness2"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_3.DRP1.png" alt="20180402_3.DRP1"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_4.DRP2.png" alt="20180402_4.DRP2"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_5.DRP3.png" alt="20180402_5.DRP3"></p>
+<p><img src="https://github.com/nimmygreen/BlogPicture/blob/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_6.DRP4.png" alt="20180402_6.DRP4"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_7.DRP5.png" alt="20180402_7.DRP5"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_8.DRP6.png" alt="20180402_8.DRP6"></p>
+<p>ref. <a href="https://ieeexplore.ieee.org/document/8707107" title="Density-ratio Peak Based Semi-supervised Algorithm for Access Network User Behavior Analysis" target="_blank" rel="external">https://ieeexplore.ieee.org/document/8707107</a></p>
 
       
 
@@ -271,11 +244,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">(void*)</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">malloc</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">用户行为建模</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">带宽资源分配智能化</a>
         		</li>
       		
 		</ul>
@@ -331,7 +308,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://nimmygreen.github.io/2017/10/14/C系列-强制类型转换/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://nimmygreen.github.io/2017/10/20/项目-智能接入及用户行为建模/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -355,8 +332,8 @@ var _hmt = _hmt || [];
     </a>
   
   
-    <a href="/2017/10/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/10/20/项目-入侵检测/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[项目]入侵检测</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -483,11 +460,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数重载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">函数数据类型</a>
+                <a href="javascript:void(0)" class="js-tag color5">多维数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,15 +476,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+                <a href="javascript:void(0)" class="js-tag color5">函数重载</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">多维数组</a>
+                <a href="javascript:void(0)" class="js-tag color2">函数数据类型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,31 +492,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数组类型</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">数组指针类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,6 +517,34 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Silhouette coefficient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
             
             <div class="clearfix"></div>

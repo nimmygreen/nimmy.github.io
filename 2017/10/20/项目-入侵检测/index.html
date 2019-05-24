@@ -6,29 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://nimmygreen.github.io">
-  <title>[项目]智能接入及用户行为建模 | 思想直播信号</title>
+  <title>[项目]入侵检测 | 思想直播信号</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。         ref. https://ieeexplore.ieee.org/document/8707107">
-<meta name="keywords" content="机器学习,用户行为建模,带宽资源分配智能化">
+  <meta name="description" content="Developed density peak with support vector data description for access network intrusion detection systemsAccess network intrusion detection (ANID) is an indispensable role in guaranteeing information">
+<meta name="keywords" content="Access network intrusion detection,Density peak clustering,Support vector data description,Silhouette coefficient">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[项目]智能接入及用户行为建模">
-<meta property="og:url" content="https://nimmygreen.github.io/2017/10/14/项目-智能接入及用户行为建模/index.html">
+<meta property="og:title" content="[项目]入侵检测">
+<meta property="og:url" content="https://nimmygreen.github.io/2017/10/20/项目-入侵检测/index.html">
 <meta property="og:site_name" content="思想直播信号">
-<meta property="og:description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。         ref. https://ieeexplore.ieee.org/document/8707107">
+<meta property="og:description" content="Developed density peak with support vector data description for access network intrusion detection systemsAccess network intrusion detection (ANID) is an indispensable role in guaranteeing information">
 <meta property="og:locale" content="chinese">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_2.network%20state%20awareness2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_3.DRP1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_4.DRP2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_5.DRP3.png">
-<meta property="og:image" content="https://github.com/nimmygreen/BlogPicture/blob/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_6.DRP4.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_7.DRP5.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_8.DRP6.png">
-<meta property="og:updated_time" content="2019-05-24T03:23:26.189Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_1.DDPC-SVDD1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_2.DDPC-SVDD2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_3.DDPC-SVDD3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_4.DDPC-SVDD4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_5.DDPC-SVDD5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_6.DDPC-SVDD6.png">
+<meta property="og:updated_time" content="2019-05-24T03:26:40.192Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[项目]智能接入及用户行为建模">
-<meta name="twitter:description" content="根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。         ref. https://ieeexplore.ieee.org/document/8707107">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png">
+<meta name="twitter:title" content="[项目]入侵检测">
+<meta name="twitter:description" content="Developed density peak with support vector data description for access network intrusion detection systemsAccess network intrusion detection (ANID) is an indispensable role in guaranteeing information">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_1.DDPC-SVDD1.png">
   
     <link rel="alternative" href="/atom.xml" title="思想直播信号" type="application/atom+xml">
   
@@ -170,36 +168,34 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-项目-智能接入及用户行为建模" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-项目-入侵检测" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      [项目]智能接入及用户行为建模
+      [项目]入侵检测
     </h1>
   
 
         
-        <a href="/2017/10/14/项目-智能接入及用户行为建模/" class="archive-article-date">
-  	<time datetime="2017-10-14T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
+        <a href="/2017/10/20/项目-入侵检测/" class="archive-article-date">
+  	<time datetime="2017-10-20T02:05:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>根据目前电信网用户行为、业务等数据，对多业务特征和用户行为进行细化研究，建立理论模型预测电信网的现在和未来用户规模，业务使用特征及趋势等，预测用户流量使用及分布情况等。通过理论建模，分析未来新业务带来用户行为的突变，考虑峰值、不同业务需求的时间段等。</p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_1.network%20state%20awareness1.png" alt="20180402_1.network state awareness1"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_2.network%20state%20awareness2.png" alt="20180402_2.network state awareness2"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_3.DRP1.png" alt="20180402_3.DRP1"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_4.DRP2.png" alt="20180402_4.DRP2"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_5.DRP3.png" alt="20180402_5.DRP3"></p>
-<p><img src="https://github.com/nimmygreen/BlogPicture/blob/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_6.DRP4.png" alt="20180402_6.DRP4"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_7.DRP5.png" alt="20180402_7.DRP5"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E6%99%BA%E8%83%BD%E6%8E%A5%E5%85%A5%E5%8F%8A%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%BB%BA%E6%A8%A1/20180402_8.DRP6.png" alt="20180402_8.DRP6"></p>
-<p>ref. <a href="https://ieeexplore.ieee.org/document/8707107" title="Density-ratio Peak Based Semi-supervised Algorithm for Access Network User Behavior Analysis" target="_blank" rel="external">https://ieeexplore.ieee.org/document/8707107</a></p>
+        <h3 id="Developed-density-peak-with-support-vector-data-description-for-access-network-intrusion-detection-systems"><a href="#Developed-density-peak-with-support-vector-data-description-for-access-network-intrusion-detection-systems" class="headerlink" title="Developed density peak with support vector data description for access network intrusion detection systems"></a>Developed density peak with support vector data description for access network intrusion detection systems</h3><p>Access network intrusion detection (ANID) is an indispensable role in guaranteeing information security, where data-classification is a key operating procedure. We propose an algorithm of the developed density peak clustering with support vector data description (DDPC-SVDD) to break through the bottleneck of processing high dimensional data with non-uniform density. The cut-off distance (dc) depending on experience in density peak clustering (DPC) is optimized by our defined coefficient called adjusted silhouette coefficient (ASIL). This can overcome the unfitness of traditional silhouette coefficient (SIL) to multi-noise samples and clustering instability. In order to generate the accurate classifier, an improved particle swarm optimization algorithm (PSO) evolves the parameters of support vector data description (SVDD). The proposed algorithm is evaluated through UCI standard datasets and KDD 99 datasets and results show higher accuracy and robustness with respect to the conventional ones.</p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_1.DDPC-SVDD1.png" alt="20180402_1.DDPC-SVDD1"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_2.DDPC-SVDD2.png" alt="20180402_2.DDPC-SVDD2"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_3.DDPC-SVDD3.png" alt="20180402_3.DDPC-SVDD3"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_4.DDPC-SVDD4.png" alt="20180402_4.DDPC-SVDD4"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_5.DDPC-SVDD5.png" alt="20180402_5.DDPC-SVDD5"></p>
+<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_6.DDPC-SVDD6.png" alt="20180402_6.DDPC-SVDD6"></p>
+<p>ref. <a href="http://ieeexplore.ieee.org/document/8440023" title="Developed Density Peak Clustering With Support Vector Data Description for Access Network Intrusion Detection" target="_blank" rel="external">http://ieeexplore.ieee.org/document/8440023</a></p>
 
       
 
@@ -244,15 +240,19 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Access network intrusion detection</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">用户行为建模</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Density peak clustering</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">带宽资源分配智能化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Support vector data description</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Silhouette coefficient</a>
         		</li>
       		
 		</ul>
@@ -308,7 +308,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://nimmygreen.github.io/2017/10/14/项目-智能接入及用户行为建模/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://nimmygreen.github.io/2017/10/20/项目-入侵检测/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,18 +322,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/10/14/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/10/20/项目-智能接入及用户行为建模/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Hello World
+          [项目]智能接入及用户行为建模
         
       </div>
     </a>
   
   
-    <a href="/2017/10/14/项目-入侵检测/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">[项目]入侵检测</div>
+    <a href="/2017/10/14/GitHub上搭建博客-增加相册功能/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GitHub上搭建博客&amp;增加相册功能</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -460,11 +460,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数重载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">函数数据类型</a>
+                <a href="javascript:void(0)" class="js-tag color5">多维数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,15 +476,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+                <a href="javascript:void(0)" class="js-tag color5">函数重载</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">多维数组</a>
+                <a href="javascript:void(0)" class="js-tag color2">函数数据类型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,31 +492,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数组类型</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">数组指针类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,6 +517,34 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Silhouette coefficient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">用户行为建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">(void*)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">malloc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
             
             <div class="clearfix"></div>
