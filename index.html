@@ -161,6 +161,84 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C系列-内存五区模型-变量的生命周期" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/24/C系列-内存五区模型-变量的生命周期/">[C系列]内存五区模型-变量的生命周期</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/24/C系列-内存五区模型-变量的生命周期/" class="archive-article-date">
+  	<time datetime="2019-05-24T06:16:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/201905234_1.%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="内存五区模型-变量的生命周期"><br>流程说明：<br>(1)    操作系统把物理硬盘代码load到内存<br>(2)    操作系统把C代码分成五个区（堆区、栈区、全局区、常量区、代码区）<br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/201905234_2.%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="内存五区模型-变量的生命周期"><br>注意：heap生长方向向上。stack开口有向上(release)向下(debug)之分，一般stack的生长方向向下；<br>先入栈的地址小（大）为开口向上（下）栈；<br>不管栈的开口向上向下，buf的内存地址生长方向永远是向上的，若栈的开口向下，buf的首地址在最下方，所以栈的生长方向和buf的内存增长方向是两个不同的概念。<br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/201905234_3.%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="内存五区模型-变量的生命周期"><br>(3)    操作系统找到main函数入口，执行代码<br>(4) 变量的生命周期（与变量所占内存的区域有关）<br><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/C%E7%B3%BB%E5%88%97%5D%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/201905234_4.%E5%86%85%E5%AD%98%E4%BA%94%E5%8C%BA%E6%A8%A1%E5%9E%8B-%E5%8F%98%E9%87%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="内存五区模型-变量的生命周期"><br>作用域：局部变量的重定义，会在当前块中此重定义之后，屏蔽同名的全局变量的值。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">100</span>, sum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="number">10</span>; ++i)</div><div class="line">		sum += i;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;i&lt;&lt;” “&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;	<span class="comment">//i = 100, sum = 45</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">内存五区模型</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">变量的生命周期</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/24/C系列-内存五区模型-变量的生命周期/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C系列-二级指针的三种内存模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -168,7 +246,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/24/C系列-二级指针的三种内存模型/">C系列-二级指针的三种内存模型</a>
+      <a class="article-title" href="/2019/05/24/C系列-二级指针的三种内存模型/">[C系列]二级指针的三种内存模型</a>
     </h1>
   
 
@@ -195,6 +273,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">二级指针的三种内存模型</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -968,99 +1057,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-项目-入侵检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/项目-入侵检测/">[项目]入侵检测</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/20/项目-入侵检测/" class="archive-article-date">
-  	<time datetime="2017-10-20T02:05:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Developed-density-peak-with-support-vector-data-description-for-access-network-intrusion-detection-systems"><a href="#Developed-density-peak-with-support-vector-data-description-for-access-network-intrusion-detection-systems" class="headerlink" title="Developed density peak with support vector data description for access network intrusion detection systems"></a>Developed density peak with support vector data description for access network intrusion detection systems</h3><p>Access network intrusion detection (ANID) is an indispensable role in guaranteeing information security, where data-classification is a key operating procedure. We propose an algorithm of the developed density peak clustering with support vector data description (DDPC-SVDD) to break through the bottleneck of processing high dimensional data with non-uniform density. The cut-off distance (dc) depending on experience in density peak clustering (DPC) is optimized by our defined coefficient called adjusted silhouette coefficient (ASIL). This can overcome the unfitness of traditional silhouette coefficient (SIL) to multi-noise samples and clustering instability. In order to generate the accurate classifier, an improved particle swarm optimization algorithm (PSO) evolves the parameters of support vector data description (SVDD). The proposed algorithm is evaluated through UCI standard datasets and KDD 99 datasets and results show higher accuracy and robustness with respect to the conventional ones.</p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_1.DDPC-SVDD1.png" alt="20180402_1.DDPC-SVDD1"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_2.DDPC-SVDD2.png" alt="20180402_2.DDPC-SVDD2"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_3.DDPC-SVDD3.png" alt="20180402_3.DDPC-SVDD3"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_4.DDPC-SVDD4.png" alt="20180402_4.DDPC-SVDD4"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_5.DDPC-SVDD5.png" alt="20180402_5.DDPC-SVDD5"></p>
-<p><img src="https://raw.githubusercontent.com/nimmygreen/BlogPicture/%E9%A1%B9%E7%9B%AE%5D%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/20180402_6.DDPC-SVDD6.png" alt="20180402_6.DDPC-SVDD6"></p>
-<p>ref. <a href="http://ieeexplore.ieee.org/document/8440023" title="Developed Density Peak Clustering With Support Vector Data Description for Access Network Intrusion Detection" target="_blank" rel="external">http://ieeexplore.ieee.org/document/8440023</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Access network intrusion detection</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Density peak clustering</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Support vector data description</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Silhouette coefficient</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/20/项目-入侵检测/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1159,15 +1155,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sizeof()</a>
+                <a href="javascript:void(0)" class="js-tag color2">二级指针的三种内存模型</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">strlen()</a>
+                <a href="javascript:void(0)" class="js-tag color2">内存五区模型</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">字符串长度</a>
+                <a href="javascript:void(0)" class="js-tag color3">变量的生命周期</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">多维数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1176,18 +1176,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">函数数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">多维数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1207,15 +1195,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">指针数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数组类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数组指针类型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1235,6 +1223,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数组类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">数组指针类型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
@@ -1244,6 +1240,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">带宽资源分配智能化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sizeof()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">strlen()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">字符串长度</a>
               </li>
             
             <div class="clearfix"></div>
