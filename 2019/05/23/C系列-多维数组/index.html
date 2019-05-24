@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://nimmygreen.github.io">
-  <title>Tag: 数据类型 | 思想直播信号</title>
+  <title>[C系列]多维数组 | 思想直播信号</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="电子科大小硕">
-<meta property="og:type" content="website">
-<meta property="og:title" content="思想直播信号">
-<meta property="og:url" content="https://nimmygreen.github.io/tags/数据类型/index.html">
+  <meta name="description" content="1.    (1)    多维数组的本质是一个指向一维数组的行指针，多维数组名的本质是一个数组指针: 见https://nimmygreen.github.io/2019/05/23/C%E7%B3%BB%E5%88%97-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E">
+<meta name="keywords" content="多维数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[C系列]多维数组">
+<meta property="og:url" content="https://nimmygreen.github.io/2019/05/23/C系列-多维数组/index.html">
 <meta property="og:site_name" content="思想直播信号">
-<meta property="og:description" content="电子科大小硕">
+<meta property="og:description" content="1.    (1)    多维数组的本质是一个指向一维数组的行指针，多维数组名的本质是一个数组指针: 见https://nimmygreen.github.io/2019/05/23/C%E7%B3%BB%E5%88%97-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E">
 <meta property="og:locale" content="chinese">
+<meta property="og:updated_time" content="2019-05-24T02:42:27.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="思想直播信号">
-<meta name="twitter:description" content="电子科大小硕">
+<meta name="twitter:title" content="[C系列]多维数组">
+<meta name="twitter:description" content="1.    (1)    多维数组的本质是一个指向一维数组的行指针，多维数组名的本质是一个数组指针: 见https://nimmygreen.github.io/2019/05/23/C%E7%B3%BB%E5%88%97-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E">
   
     <link rel="alternative" href="/atom.xml" title="思想直播信号" type="application/atom+xml">
   
@@ -159,64 +161,178 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-C系列-多维数组" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/01/C系列-数据类型/" class="archive-article-date">
-  	<time datetime="2017-11-01T02:59:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/01/C系列-数据类型/">[C系列]数据类型</a>
+    <h1 class="article-title" itemprop="name">
+      [C系列]多维数组
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/23/C系列-多维数组/" class="archive-article-date">
+  	<time datetime="2019-05-23T08:28:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-1-多维数组的本质是一个指向一维数组的行指针，多维数组名的本质是一个数组指针-见https-nimmygreen-github-io-2019-05-23-C-E7-B3-BB-E5-88-97-E6-95-B0-E7-BB-84-E7-B1-BB-E5-9E-8B-E6-95-B0-E7-BB-84-E6-8C-87-E9-92-88-E7-B1-BB-E5-9E-8B"><a href="#1-1-多维数组的本质是一个指向一维数组的行指针，多维数组名的本质是一个数组指针-见https-nimmygreen-github-io-2019-05-23-C-E7-B3-BB-E5-88-97-E6-95-B0-E7-BB-84-E7-B1-BB-E5-9E-8B-E6-95-B0-E7-BB-84-E6-8C-87-E9-92-88-E7-B1-BB-E5-9E-8B" class="headerlink" title="1.    (1)    多维数组的本质是一个指向一维数组的行指针，多维数组名的本质是一个数组指针: 见https://nimmygreen.github.io/2019/05/23/C%E7%B3%BB%E5%88%97-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B/"></a>1.    (1)    多维数组的本质是一个指向一维数组的行指针，<strong>多维数组名的本质是一个数组指针</strong>: 见<a href="https://nimmygreen.github.io/2019/05/23/C%E7%B3%BB%E5%88%97-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B/" title="3. 数组指针类型变量">https://nimmygreen.github.io/2019/05/23/C%E7%B3%BB%E5%88%97-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B/</a></h3><h3 id="2-2-多维数组名作函数参数退化为一个指向一维数组的行指针"><a href="#2-2-多维数组名作函数参数退化为一个指向一维数组的行指针" class="headerlink" title="2.    (2)    多维数组名作函数参数退化为一个指向一维数组的行指针"></a>2.    (2)    <strong>多维数组名作函数参数退化为一个指向一维数组的行指针</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print1</span><span class="params">(<span class="keyword">int</span> c[<span class="number">3</span>][<span class="number">5</span>])</span></span>;</div><div class="line">void print2(int (*c)[5]);</div><div class="line"><span class="comment">//多维数组的本质是一个指向一维数组的行指针，多维数组名的本质是一个数组指针</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">5</span>] = &#123;&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125;, &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="comment">//	print1(a);</span></div><div class="line">	print2(a);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print1</span><span class="params">(<span class="keyword">int</span> c[<span class="number">3</span>][<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">5</span>; j++)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"c[%d][%d] = %d\n"</span>, i, j, c[i][j]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void print2(int (*c)[5])</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">5</span>; j++)</div><div class="line">		&#123;</div><div class="line"><span class="comment">//			printf("c[%d][%d] = %d\n", i, j, *(*(c+i)+j));</span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"c[%d][%d] = %d\n"</span>, i, j, c[i][j]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.    总结"></a>3.    总结</h3><p>二维数组参数同样存在退化的问题：<br>(1) 二维数组中的每个元素是一维数组<br>(2) 二维数组参数中第一维的参数可以忽略<br>void f(int a[5]);    =&gt;    void f(int a[]);    =&gt;    void f(int <em>a);<br>void g(int a[3][5]);    =&gt;    void g(int a[][3]);    =&gt;    void g(int (</em>a)[5]);<br>(3) 等价关系<br>数组参数：                        等效的指针参数：<br>一维数组 char a[30]                指针 char<em><br>指针数组 char </em>a[30]                指针的指针 char <em>*a<br>二维数组 char a[10][30]            数组的指针 char (</em>a)[30]</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据类型</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">最小存储空间</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">多维数组</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://nimmygreen.github.io/2019/05/23/C系列-多维数组/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/05/23/C系列-数组类型-数组指针类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[C系列]数组类型&amp;数组指针类型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -248,9 +364,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
